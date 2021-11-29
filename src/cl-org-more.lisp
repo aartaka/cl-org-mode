@@ -1,4 +1,4 @@
-(in-package :cl-org-mode)
+(in-package :cl-org-more)
 
 ;;;
 ;;; Node classes
@@ -43,7 +43,7 @@
 ;;; Node content object classes
 ;;;
 (defclass org-container ()
-  ((children   :reader children-of   :initarg :children :type 'list)))
+  ((children   :reader children-of   :initarg :children :type list)))
 
 (defclass org-named-container (org-container)
   ((name       :reader name-of       :initarg :name)))
@@ -62,9 +62,9 @@
 ;;;
 ;;; Convenience package for happy WITH-SLOTS usage..
 ;;;
-(defpackage :cl-org-mode-slots
+(defpackage :cl-org-more-slots
   (:import-from
-   #:cl-org-mode
+   #:cl-org-more
    ;; node
    #:in #:out
    ;; org-node

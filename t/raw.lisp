@@ -1,12 +1,12 @@
-(defpackage :cl-org-mode-raw-tests
+(defpackage :cl-org-more-raw-tests
   (:use :cl
         :alexandria
         :iterate
         :parser-combinators
         :parser-combinators-debug
-	:cl-org-mode-raw))
+	:cl-org-more-raw))
 
-(in-package :cl-org-mode-raw-tests)
+(in-package :cl-org-more-raw-tests)
 
 (defparameter *org-entry-testcases*
   '( ;; 0
@@ -232,7 +232,7 @@
   (format t ";; success rate: ~D/~D~%" succeeded (length org-files)))
 
 (defvar *org-files* (mapcar (lambda (f)
-                              (asdf:system-relative-pathname (asdf:find-system :cl-org-mode) f))
+                              (asdf:system-relative-pathname (asdf:find-system :cl-org-more) f))
                             '(#p"doc/raw-parser.org"
                               #p"src/raw/README.org"
                               #p"t/example.org")))

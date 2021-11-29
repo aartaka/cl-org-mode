@@ -1,4 +1,4 @@
-(in-package :cl-org-mode-raw)
+(in-package :cl-org-more-raw)
 
 (define-constant +newline-string+ (coerce #(#\Newline) 'string) :test #'equal)
 

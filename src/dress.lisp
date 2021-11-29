@@ -1,9 +1,9 @@
-(in-package :cl-org-mode)
+(in-package :cl-org-more)
 
 
 (defun call-with-raw-section-node-properties (section fn)
   (multiple-value-bind (drawer filtered-section)
-      (if (cl-org-mode-raw:org-raw-property-drawer-p (second section))
+      (if (cl-org-more-raw:org-raw-property-drawer-p (second section))
           (values (second section) (cons (first section) (cddr section)))
           (values nil              section))
     (destructuring-bind (&key property-drawer contents) drawer
@@ -42,11 +42,11 @@
   (make-instance 'org-section :children (mapcar #'org-dress-element (rest ast))))
 
 (defun org-dress-node (ast)
-  (assert (cl-org-mode-raw:org-raw-entry-p ast))
+  (assert (cl-org-more-raw:org-raw-entry-p ast))
   (destructuring-bind (headline section &rest children) (rest ast)
-    (assert (cl-org-mode-raw:org-raw-stars-p headline))
+    (assert (cl-org-more-raw:org-raw-stars-p headline))
     (assert (or (null section)
-                (cl-org-mode-raw:org-raw-section-p section)))
+                (cl-org-more-raw:org-raw-section-p section)))
     (destructuring-bind (depth &key title commented quoted todo priority tags) (rest headline)
       (declare (ignore depth commented quoted))
       (with-raw-section-node-properties (node-properties section) section
@@ -59,11 +59,11 @@
                    :static-properties node-properties)))))
 
 (defun org-dress (ast)
-  (assert (cl-org-mode-raw:org-raw-p ast))
+  (assert (cl-org-more-raw:org-raw-p ast))
   (destructuring-bind (header section &rest children) (rest ast)
-    (assert (cl-org-mode-raw:org-raw-header-p header))
+    (assert (cl-org-more-raw:org-raw-header-p header))
     (assert (or (null section)
-                (cl-org-mode-raw:org-raw-section-p section)))
+                (cl-org-more-raw:org-raw-section-p section)))
     (destructuring-bind (&key title &allow-other-keys) (rest header)
       (with-raw-section-node-properties (node-properties section) section
         (make-instance 'org-document
@@ -79,7 +79,7 @@
                 (string org)
                 (pathname (read-file-into-string org)))))
     (parser-combinators-debug:with-position-cache (cache text)
-      (multiple-value-bind (result vector-context successp front seen-positions) (cl-org-mode-raw:org-raw-parse org)
+      (multiple-value-bind (result vector-context successp front seen-positions) (cl-org-more-raw:org-raw-parse org)
         (declare (ignore vector-context seen-positions))
         (if successp
             (org-dress result)

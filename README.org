@@ -1,37 +1,46 @@
-## -*- mode: org -*-
-#+STARTUP: hidestars odd
-#+AUTHOR: Samium Gromoff
-#+EMAIL: _deepfire@feelingofgreen.ru
+#+TITLE:cl-org-more: cl-org-mode improved twice
 
 * What is it?
 
-  CL-ORG-MODE is a three-component, layered solution for
+  CL-ORG-MORE is a three-component, layered solution for
   manipulation of Org-structured text:
 
-  - CL-ORG-MODE-RAW ::
+  - CL-ORG-MORE-RAW ::
     provides tolerant parsing of Org-structured text into a semi-detailed AST
-  - CL-ORG-MODE (should we call it CL-ORG-MODE-MIDDLE, to avoid confusion?) ::
+  - CL-ORG-MORE ::
     "dresses" the AST into a fairly rich object tree, and allows serialisation into text
-  - CL-ORG-MODE-EXTENDED ::
+  - CL-ORG-MORE-EXTENDED ::
     allows representation of DAGs in Org files, atop a CAS (content-addressed storage)
 
-* Home
+* Getting started
+Clone the repository:
+#+begin_src sh
+  git clone https://github.com/aartaka/cl-org-more
+#+end_src
+Then, in your CL image, load =cl-org-more=
+#+begin_src lisp
+  ;; Put cl-org-more into somewhere ASDF can find it, or run
+  ;; (asdf:load-asd #p"/path/to/cl-org-more/")
+  (asdf:load-system :cl-org-more-extended)
+#+end_src
+And then you can test it
+#+begin_src lisp
+  (org:org-parse #p"/path/to/your/agenda.org")
+#+end_src
+And enjoy looking at your file parsed to a cool hierarchical object tree :)
 
-  The current home of CL-ORG-MODE is at:
-
-    https://github.com/deepfire/cl-org-mode
 
 * Dependencies
 
-  - CL-ORG-MODE-RAW:      alexandria parser-combinators iterate split-sequence
-  - CL-ORG-MODE:          cl-org-mode-raw cl-containers
-  - CL-ORG-MODE-EXTENDED: cl-org-mode ironclad flexi-streams
+  - CL-ORG-MORE-RAW:      alexandria parser-combinators iterate split-sequence
+  - CL-ORG-MORE:          cl-org-more-raw cl-containers
+  - CL-ORG-MORE-EXTENDED: cl-org-more ironclad flexi-streams
 
 * Testing
 
   Tests depend on the rt library.
 
   #+BEGIN_SRC common-lisp
-  (asdf:oos 'asdf:test-op :cl-org-mode)
-  (asdf:oos 'asdf:test-op :cl-org-mode-extended)
+  (asdf:test-system :cl-org-more)
+  (asdf:test-system :cl-org-more-extended)
   #+END_SRC

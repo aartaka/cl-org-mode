@@ -1,4 +1,4 @@
-(in-package :cl-org-mode)
+(in-package :cl-org-more)
 
 
 (defun mapc-nodes-preorder (fn node &aux (seen (make-hash-table :test 'eq)))

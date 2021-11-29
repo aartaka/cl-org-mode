@@ -1,6 +1,6 @@
 ;;; -*- lisp -*-
 
-(defsystem :cl-org-mode-tests
+(defsystem :cl-org-more-tests
   :serial t
   :components
   ((:module :t
@@ -8,5 +8,5 @@
 	    :components
             ((:file "raw")
              (:file "middle"))))
-  :depends-on (:cl-org-mode-raw :parser-combinators-debug
-               :cl-org-mode :rt))
+  :depends-on (:cl-org-more-raw :parser-combinators-debug
+               :cl-org-more :rt))

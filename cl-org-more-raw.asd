@@ -1,7 +1,7 @@
 ;;; -*- lisp -*-
 
-(defsystem :cl-org-mode-raw
-  :components 
+(defsystem :cl-org-more-raw
+  :components
   ((:module :src
 	    :serial t
 	    :components

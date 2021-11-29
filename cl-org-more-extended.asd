@@ -1,7 +1,7 @@
 ;;; -*- lisp -*-
 
-(defsystem :cl-org-mode-extended
-  :components 
+(defsystem :cl-org-more-extended
+  :components
   ((:module :src
 	    :serial t
 	    :components
@@ -15,8 +15,8 @@
                        (:file "extended")
                        ))
 	     )))
-  :in-order-to ((asdf:test-op (asdf:load-op :cl-org-mode-extended-tests)))
+  :in-order-to ((asdf:test-op (asdf:load-op :cl-org-more-extended-tests)))
   :perform (asdf:test-op :after (op c)
              (or (funcall (intern "DO-TESTS" (find-package "RTEST")))
-                 (error "TEST-OP failed for CL-ORG-MODE-EXTENDED-TESTS")))
-  :depends-on (:cl-org-mode :ironclad :flexi-streams))
+                 (error "TEST-OP failed for CL-ORG-MORE-EXTENDED-TESTS")))
+  :depends-on (:cl-org-more :ironclad :flexi-streams))

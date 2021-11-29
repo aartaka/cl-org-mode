@@ -1,7 +1,7 @@
 ;;; -*- lisp -*-
 
-(defsystem :cl-org-mode
-  :components 
+(defsystem :cl-org-more
+  :components
   ((:module :src
 	    :serial t
 	    :components
@@ -9,14 +9,14 @@
 	     (:file "protocol")
              (:file "utils")
 	     (:file "conditions")
-	     (:file "cl-org-mode")
+	     (:file "cl-org-more")
 	     (:file "dress")
 	     (:file "traversal")
 	     (:file "present")
 	     )))
-  :in-order-to ((asdf:test-op (asdf:load-op :cl-org-mode-tests)))
+  :in-order-to ((asdf:test-op (asdf:load-op :cl-org-more-tests)))
   :perform (asdf:test-op :after (op c)
              (or (funcall (intern "DO-TESTS" (find-package "RTEST")))
-                 (error "TEST-OP failed for CL-ORG-MODE-TESTS")))
+                 (error "TEST-OP failed for CL-ORG-MORE-TESTS")))
   :serial t
-  :depends-on (:alexandria :iterate :cl-org-mode-raw :parser-combinators-debug))
+  :depends-on (:alexandria :iterate :cl-org-more-raw :parser-combinators-debug))

@@ -1,4 +1,5 @@
-(defpackage :cl-org-mode-utils
+(defpackage :cl-org-more-utils
+  (:nicknames :org-utils)
   (:use :common-lisp :alexandria :iterate)
   (:export
    ;;
@@ -36,8 +37,9 @@
    #:define-simple-warning
    ))
 
-(defpackage :cl-org-mode
-  (:use :common-lisp :alexandria :iterate :cl-org-mode-utils)
+(defpackage :cl-org-more
+  (:nicknames :org)
+  (:use :common-lisp :alexandria :iterate :cl-org-more-utils)
   (:export
    #:node
    #:node.in

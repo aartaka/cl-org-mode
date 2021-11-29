@@ -1,7 +1,8 @@
-(defpackage :cl-org-mode-extended
+(defpackage :cl-org-more-extended
+  (:nicknames :org-extended :org-ext)
   (:use :common-lisp :alexandria :iterate
-        :cl-org-mode :cl-org-mode-slots :cl-org-mode-utils)
-  (:import-from :cl-org-mode-raw
+        :cl-org-more :cl-org-more-slots :cl-org-more-utils)
+  (:import-from :cl-org-more-raw
                 :strconcat :strconcat* :unzip)
   (:export
    ;;

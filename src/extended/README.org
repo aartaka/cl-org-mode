@@ -20,7 +20,7 @@
   It would suffice to just do:
 
   #+BEGIN_SRC common-lisp
-  (asdf:oos 'asdf:test-op :cl-org-mode-extended)
+  (asdf:test-system :cl-org-more-extended)
   #+END_SRC
 
   The tests perform a plain Org import and two serialisation/reparse roundtrips, checking for

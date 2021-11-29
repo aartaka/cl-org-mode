@@ -1,4 +1,4 @@
-(in-package :cl-org-mode-extended)
+(in-package :cl-org-more-extended)
 
 
 (defun execute-with-digesting-stream (digest fn)

@@ -1,4 +1,5 @@
-(defpackage :cl-org-mode-raw
+(defpackage :cl-org-more-raw
+  (:nicknames :org-raw)
   (:use :common-lisp :alexandria :iterate
         :parser-combinators)
   (:export

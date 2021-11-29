@@ -1,4 +1,4 @@
-(in-package :cl-org-mode-utils)
+(in-package :cl-org-more-utils)
 
 ;; set
 (defun make-hashset (xs &key (test 'eql))

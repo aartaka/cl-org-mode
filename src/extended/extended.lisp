@@ -1,8 +1,8 @@
-(in-package :cl-org-mode-extended)
+(in-package :cl-org-more-extended)
 
 ;;;
 ;;; Properties
-(define-constant +child-property-prefix+ "CL-ORG-MODE-CHILD-" :test 'equal)
+(define-constant +child-property-prefix+ "CL-ORG-MORE-CHILD-" :test 'equal)
 
 (defun children-property-p (cons)
   (starts-with-subseq +child-property-prefix+ (car cons)))
@@ -49,7 +49,7 @@
      ,@body))
 
 (defun org-dress-document-extended (root)
-  "Recover supra-org, cl-org-mode -specific information, as encoded in properties."
+  "Recover supra-org, cl-org-more -specific information, as encoded in properties."
   (labels ((node-property-children (node child-prop-ptrs)
              (iter (for i from 0)
                    (for (name . value) in (sort child-prop-ptrs #'string< :key #'car))
