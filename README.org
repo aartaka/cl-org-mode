@@ -2,8 +2,17 @@
 
 * What is it?
 
-  CL-ORG-MORE is a three-component, layered solution for
-  manipulation of Org-structured text:
+  CL-ORG-MORE is a fork of [[https://github.com/deepfire/cl-org-mode][deepfire/cl-org-mode]] (based on the de-facto
+  standard [[https://common-lisp.net/project/cl-org-mode/][cl-org-mode]]) given the abandoned-like look of the original
+  repo. As on now, CL-ORG-MORE is simply a couple of patches and error
+  fixes, but the ambition is to support:
+  - [ ] Text markup.
+  - [ ] Active elements (links, timestamps, radios).
+  - [ ] [[https://gitlab.com/publicvoit/orgdown][Orgdown]] support.
+  - [ ] Time-management use (how to do it, though?)
+
+  CL-ORG-MORE is a three-component, layered solution for manipulation
+  of Org-structured text:
 
   - CL-ORG-MORE-RAW ::
     provides tolerant parsing of Org-structured text into a semi-detailed AST
@@ -14,24 +23,6 @@
 
 It closely follows the official [[https://orgmode.org/worg/dev/org-syntax.html#Greater_Elements][Org Syntax]] and
    [[https://orgmode.org/worg/dev/org-element-api.html][Org Element API]].
-
-* Getting started
-Clone the repository:
-#+begin_src sh
-  git clone https://github.com/aartaka/cl-org-more
-#+end_src
-Then, in your CL image, load =cl-org-more=
-#+begin_src lisp
-  ;; Put cl-org-more into somewhere ASDF can find it, or run
-  ;; (asdf:load-asd #p"/path/to/cl-org-more/")
-  (asdf:load-system :cl-org-more-extended)
-#+end_src
-And then you can test it
-#+begin_src lisp
-  (org:org-parse #p"/path/to/your/agenda.org")
-#+end_src
-And enjoy looking at your file parsed to a cool hierarchical object tree :)
-
 
 * Dependencies
 
