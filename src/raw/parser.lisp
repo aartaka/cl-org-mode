@@ -368,9 +368,9 @@
   "15.6 Summary of in-buffer settings"
   (flet ((org-keywords-as-plist (xs)
            (iter (for x in xs)
-                 (appending (destructuring-bind (&key keyword value) x
-                              (list (make-keyword (string-upcase keyword))
-                                    value)))))
+             (appending (destructuring-bind (&key keyword value) x
+                          (list (make-keyword (string-upcase keyword))
+                                value)))))
          (keywords-as-flags (xs)
            (mapcan (rcurry #'list t) xs))
          (parse-startup (xs)
@@ -405,9 +405,9 @@
          (unzip (lambda (x) (and (consp x) (eq :keyword (car x)))) (rest mix))
        (let* ((keyword-plist (org-keywords-as-plist raw-keywords))
               (startup-strings (iter (for (k v . nil) on keyword-plist by #'cddr)
-                                     (when (eq k :startup)
-                                       (collect " ")
-                                       (collect v)))))
+                                 (when (eq k :startup)
+                                   (collect " ")
+                                   (collect v)))))
          (when trace
            (format t ";;; header options:~{ ~S~}~%" keyword-plist)
            (when section-content
@@ -431,7 +431,7 @@
                         (when (or unknown conflicted)
                           (list :startup-all (keywords-as-flags all)))))
              ,(when section-content
-                    (cons :section section-content)))))))))
+                (cons :section section-content)))))))))
 
 ;;;
 ;;; Whole thing
@@ -445,9 +445,12 @@
 (defun org-raw-parse-string (string)
   (parse-string* (org-parser) string))
 
-(defun org-raw-parse (x)
-  (etypecase x
+(defun org-raw-parse (org)
+  "Parse the org document. ORG can be a string, a pathname or a stream.
+
+   Example: (org-raw-parse #p\"README.org\")"
+  (etypecase org
     (string
-     (org-raw-parse-string x))
+     (org-raw-parse-string org))
     ((or pathname stream)
-     (org-raw-parse-string (read-file-into-string x)))))
+     (org-raw-parse-string (read-file-into-string org)))))

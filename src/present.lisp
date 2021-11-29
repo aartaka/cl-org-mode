@@ -1,6 +1,10 @@
 (in-package :cl-org-more)
 
 ;;;
+;;; Primitives to print an Org structure back to its text representation.
+;;;
+
+;;;
 ;;; Tools
 (defun indent (x stream)
   (dotimes (i x)
