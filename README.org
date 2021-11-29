@@ -24,6 +24,23 @@
 It closely follows the official [[https://orgmode.org/worg/dev/org-syntax.html#Greater_Elements][Org Syntax]] and
    [[https://orgmode.org/worg/dev/org-element-api.html][Org Element API]].
 
+* Getting started
+Clone the repository:
+#+begin_src sh
+  git clone https://github.com/aartaka/cl-org-more
+#+end_src
+Then, in your CL image, load =cl-org-more=
+#+begin_src lisp
+  ;; Put cl-org-more into somewhere ASDF can find it, or run
+  ;; (asdf:load-asd #p"/path/to/cl-org-more/")
+  (asdf:load-system :cl-org-more-extended)
+#+end_src
+And then you can test it
+#+begin_src lisp
+  (org:org-parse #p"/path/to/your/agenda.org")
+#+end_src
+And enjoy looking at your file parsed to a cool hierarchical object tree :)
+
 * Dependencies
 
   - CL-ORG-MORE-RAW:      alexandria parser-combinators iterate split-sequence
